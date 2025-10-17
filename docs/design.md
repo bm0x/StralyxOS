@@ -48,3 +48,19 @@ This document outlines the design principles and architecture of the My Linux Di
 
 ## Conclusion
 The My Linux Distribution project is designed with flexibility and efficiency in mind, catering to a diverse range of hardware while providing a user-friendly experience. The modular architecture allows for easy customization and scalability, making it suitable for both desktop and mobile environments.
+
+## Quickstart (developer)
+If you want a quick, repeatable developer flow from a checked-out repository, this project includes a small `Makefile` with convenience targets that call the repository's scripts. Example:
+
+```bash
+# build a minimal rootfs
+make build-rootfs
+
+# create a bootable image using the Multipass flow on macOS
+make image
+
+# run noVNC for a browser-accessible VM
+make novnc
+```
+
+The `Makefile` is intentionally thin; the scripts under `scripts/` remain the authoritative implementation.
