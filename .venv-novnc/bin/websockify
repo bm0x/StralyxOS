@@ -1,0 +1,7 @@
+#!/Users/bm0x/Desktop/Stralyx/.venv-novnc/bin/python3
+import sys
+from websockify.websocketproxy import websockify_init
+if __name__ == '__main__':
+    if sys.argv[0].endswith('.exe'):
+        sys.argv[0] = sys.argv[0][:-4]
+    sys.exit(websockify_init())

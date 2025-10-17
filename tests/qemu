@@ -1,0 +1,19 @@
+#!/bin/bash
+# This script sets up a QEMU environment for testing the Linux distribution.
+# It assumes that QEMU is installed and available in the PATH.
+
+# Define the architecture and image path
+ARCH="x86_64"  # Change to "arm64" for ARM testing
+IMAGE_PATH="../rootfs/minimal/rootfs.img"  # Path to the root filesystem image
+
+# Start QEMU with the specified architecture
+if [ "$ARCH" == "x86_64" ]; then
+    qemu-system-x86_64 -hda $IMAGE_PATH -m 2048 -enable-kvm -nographic
+elif [ "$ARCH" == "arm64" ]; then
+    qemu-system-aarch64 -hda $IMAGE_PATH -m 2048 -M virt -nographic
+else
+    echo "Unsupported architecture: $ARCH"
+    exit 1
+fi
+
+# End of script

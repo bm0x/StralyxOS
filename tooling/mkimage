@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# This script creates a bootable image for the Linux distribution.
+# It supports both x86_64 and ARM architectures.
+
+set -e
+
+# Define variables
+OUTPUT_IMAGE="my-linux-distro.img"
+ROOTFS_DIR="../rootfs/minimal"
+KERNEL_DIR="../arch/x86_64/kernel"  # Change to ARM kernel directory as needed
+GRUB_DIR="../arch/x86_64/grub"      # Change to ARM U-Boot directory as needed
+
+# Create the image file
+dd if=/dev/zero of=$OUTPUT_IMAGE bs=1M count=1024
+
+# Format the image file
+mkfs.ext4 $OUTPUT_IMAGE
+
+# Mount the image file
+mkdir -p /mnt/image
+sudo mount -o loop $OUTPUT_IMAGE /mnt/image
+
+# Copy the root filesystem
+sudo cp -r $ROOTFS_DIR/* /mnt/image/
+
+# Install the kernel and bootloader
+sudo cp $KERNEL_DIR/* /mnt/image/boot/
+sudo cp -r $GRUB_DIR/* /mnt/image/boot/grub/
+
+# Unmount the image file
+sudo umount /mnt/image
+rmdir /mnt/image
+
+echo "Bootable image created: $OUTPUT_IMAGE"

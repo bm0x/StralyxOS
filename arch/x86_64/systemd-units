@@ -1,0 +1,10 @@
+[Unit]
+Description=My Linux Distro Service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/my-linux-distro-service
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

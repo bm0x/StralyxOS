@@ -1,0 +1,11 @@
+# /my-linux-distro/my-linux-distro/configs/fstab
+
+# This file defines the filesystem table for mounting filesystems.
+# Adjust the UUIDs and mount points as necessary for your specific setup.
+
+UUID=your-root-partition-uuid / ext4 defaults 0 1
+UUID=your-swap-partition-uuid none swap sw 0 0
+/dev/sr0 /media/cdrom iso9660 ro,noauto,users 0 0
+tmpfs /tmp tmpfs defaults,noatime,mode=1777 0 0
+/dev/sda1 /boot ext4 defaults 0 2
+/dev/sdb1 /home ext4 defaults 0 2

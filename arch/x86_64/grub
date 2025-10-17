@@ -1,0 +1,16 @@
+set timeout=5
+set default=0
+
+menuentry "My Linux Distro" {
+    linux /arch/x86_64/kernel/vmlinuz-linux root=/dev/sda1 rw
+    initrd /arch/x86_64/kernel/initramfs-linux.img
+}
+
+menuentry "Advanced options for My Linux Distro" {
+    submenu "Advanced options" {
+        menuentry "Recovery mode" {
+            linux /arch/x86_64/kernel/vmlinuz-linux root=/dev/sda1 rw single
+            initrd /arch/x86_64/kernel/initramfs-linux.img
+        }
+    }
+}

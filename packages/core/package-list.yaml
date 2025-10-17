@@ -1,0 +1,42 @@
+name: my-linux-distro
+version: 1.0
+description: Core packages for my Linux distribution
+packages:
+  - name: linux
+    version: 6.1
+    architecture: x86_64
+    dependencies:
+      - libc
+      - systemd
+  - name: linux-arm
+    version: 6.1
+    architecture: arm64
+    dependencies:
+      - libc
+      - systemd
+  - name: grub
+    version: 2.06
+    architecture: x86_64
+    dependencies:
+      - os-prober
+  - name: u-boot
+    version: 2021.10
+    architecture: arm64
+  - name: systemd
+    version: 249
+    architecture: x86_64
+  - name: systemd
+    version: 249
+    architecture: arm64
+  - name: coreutils
+    version: 8.32
+    architecture: x86_64
+  - name: coreutils
+    version: 8.32
+    architecture: arm64
+  - name: bash
+    version: 5.1
+    architecture: x86_64
+  - name: bash
+    version: 5.1
+    architecture: arm64
